@@ -1,4 +1,4 @@
-# compliments-note-project
+# compliment-storage-project
 
 ## 목차
 
@@ -9,7 +9,7 @@
 
 ### 목표
 
-- `react` 와 `typescript` 를 사용해서 칭찬 저장소 만들기
+- `react` 와 `typescript` 를 사용해서 칭찬 보관함 만들기
 
 ### 기술 스택
 
@@ -56,3 +56,5 @@
 ![플젝레이아웃-2](README.assets/layout2.jpg)
 
 ## 트러블 슈팅
+
+TBD
