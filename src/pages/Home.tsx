@@ -1,9 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useAppSelector } from '../store/hooks';
 import Card from "../components/Card";
 import FloatingActionButton from "../components/FloatingActionButton";
 
 export default function Home() {
+  const complimentList = useAppSelector(state => state.compliment.complimentList);
+
   return (
     <>
       <svg width="100%" viewBox="0 0 1269 295" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +18,7 @@ export default function Home() {
           margin: 1rem 0;
         `}
       />
-      <Card />
+      {complimentList.map(compliment => <Card key={compliment.content} compliment={compliment} />)}
       <FloatingActionButton />
     </>
   );
