@@ -6,8 +6,12 @@ export default function Card({ compliment } : { compliment: Compliment }) {
   return (
     <article
       css={css`
-        border: 1px solid #000;
+        display: inline-block;
+        max-width: 550px;
+        border: 1px solid #939393;
         border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 2rem 1rem 0;
       `}
     >
       <p>{compliment.content}</p>

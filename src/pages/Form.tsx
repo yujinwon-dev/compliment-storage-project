@@ -61,15 +61,20 @@ export default function Form() {
   return (
     <div
       css={css`
-        margin: auto 0;
+        width: 400px;
+        margin: auto;
       `}
     >
-      <h1>칭찬 추가하기</h1>
+      <h1
+        css={css`
+          line-height: 2.5;
+        `}
+      >칭찬 추가하기</h1>
       <form
         css={css`
           display: inline-flex;
           flex-flow: column wrap;
-          width: 50%;
+          width: 500px;
         `}
       >
         <label htmlFor="name">칭찬해준 사람</label>
@@ -79,29 +84,96 @@ export default function Form() {
           id="name"
           value={name}
           onChange={e => setName(e.target.value)}
+          required
+          css={css`
+            background: none;
+            border: none;
+            border-bottom: 1px solid #000;
+            margin: 1rem 0;
+          `}
         />
         <label htmlFor="content">내용</label>
-        <button
-          type="button"
-          onClick={() => {
-            navigator.clipboard.readText().then(clipText => setContent(clipText))
-          }}
-        >클립보드 붙여넣기</button>
-        <input
-          type="file"
-          name="input-file"
-          id="input-file"
-          onChange={e => handleImageSelection(e)}
-        />
+        <div
+          css={css`
+            display: flex;
+            justify-content: space-evenly;
+            margin: 1rem 0;
+          `}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              navigator.clipboard.readText().then(clipText => setContent(clipText))
+            }}
+            css={css`
+              width: fit-content;
+              font-size: 1rem;
+              color: #fff;
+              background-color: rgba(0, 0, 0, 0.6);
+              padding: 0.5rem 2rem;
+              border: none;
+              border-radius: 10px;
+              cursor: pointer;
+              :hover {
+                background-color: rgba(0, 0, 0, 0.3);
+              }
+            `}
+          >클립보드 붙여넣기</button>
+          <label
+            htmlFor="input-file"
+            css={css`
+              display: inline-block;
+              width: fit-content;
+              color: #fff;
+              background-color: rgba(0, 0, 0, 0.6);
+              padding: 0.5rem 2rem;
+              border-radius: 10px;
+              cursor: pointer;
+              :hover {
+                background-color: rgba(0, 0, 0, 0.3);
+              }
+              `}
+          >이미지에서 텍스트 추출하기</label>
+          <input
+            type="file"
+            name="input-file"
+            id="input-file"
+            onChange={e => handleImageSelection(e)}
+            css={css`
+                position: absolute;
+                z-index: -100;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                opacity: 0;
+            `}
+          />
+        </div>
         <textarea
           name="content"
           id="content"
           value={content}
           onChange={e => setContent(e.target.value)}
           cols={30}
-          rows={10}
+          rows={15}
+          css={css`
+            border: 1px solid #939393;
+            border-radius: 10px;
+          `}
         />
-        <button type="button" onClick={handleFormSubmit}>추가</button>
+        <button
+          type="button"
+          onClick={handleFormSubmit}
+          css={css`
+            width: fit-content;
+            font-size: 1rem;
+            padding: 0.5rem 2rem;
+            border: 1px solid #939393;
+            border-radius: 10px;
+            margin: 1rem 0 0 auto;
+            cursor: pointer;
+          `}
+        >추가</button>
       </form>
     </div>
   );

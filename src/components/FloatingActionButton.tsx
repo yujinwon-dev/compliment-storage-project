@@ -14,7 +14,7 @@ export default function FloatingActionButton() {
         width: 50px;
         height: 50px;
         font-size: 30px;
-        border: 1px solid #000;
+        border: 1px solid #939393;
         border-radius: 50%;
         cursor: pointer;
       `}

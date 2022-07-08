@@ -15,6 +15,7 @@ export default function Home() {
       </svg>
       <hr
         css={css`
+          border: 1px solid #939393;
           margin: 1rem 0;
         `}
       />
