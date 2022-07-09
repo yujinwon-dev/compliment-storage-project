@@ -5,7 +5,7 @@ import Card from "../components/Card";
 import FloatingActionButton from "../components/FloatingActionButton";
 
 export default function Home() {
-  const complimentList = useAppSelector(state => state.compliment.complimentList);
+  const complimentList = useAppSelector(state => state.complimentList);
 
   return (
     <>
