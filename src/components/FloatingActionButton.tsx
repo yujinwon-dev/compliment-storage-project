@@ -8,7 +8,7 @@ export default function FloatingActionButton() {
     <button
       onClick={() => navigate('/create')}
       css={css`
-        position: absolute;
+        position: fixed;
         right: 2rem;
         bottom: 2rem;
         width: 50px;

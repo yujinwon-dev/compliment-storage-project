@@ -17,7 +17,7 @@ export default function Form() {
       const reader = new FileReader();
       reader.readAsDataURL(files[0]);
       reader.onloadend = function() {
-      // TODO: png일 경우 jpg로 변환
+        // TODO: png 파일 처리
         const result = reader.result as string;
         const text = result.split(',')[1];
         handleTextDetection(text.startsWith('/9j/') ? text : `/9j/${text}`);
@@ -48,9 +48,10 @@ export default function Form() {
     })
       .then(res => res.json())
       .then(data => {
-        const text = data.responses[0].fullTextAnnotation.text
-        setContent(text.replaceAll('\n', ''))
+        const text = data.responses[0].fullTextAnnotation.text;
+        setContent(text.replaceAll('\n', ''));
       })
+      .catch(() => alert('텍스트를 추출할 수 없는 이미지입니다.'));
   }
 
   function handleFormSubmit() {
@@ -61,7 +62,7 @@ export default function Form() {
   return (
     <div
       css={css`
-        width: 400px;
+        max-width: 500px;
         margin: auto;
       `}
     >
@@ -72,9 +73,9 @@ export default function Form() {
       >칭찬 추가하기</h1>
       <form
         css={css`
-          display: inline-flex;
+          display: flex;
           flex-flow: column wrap;
-          width: 500px;
+          width: 100%;
         `}
       >
         <label htmlFor="name">칭찬해준 사람</label>
@@ -96,8 +97,14 @@ export default function Form() {
         <div
           css={css`
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: space-evenly;
             margin: 1rem 0;
+            
+            @media screen and (min-width: 768px) {
+              flex-direction: row;
+            }
           `}
         >
           <button
@@ -113,9 +120,14 @@ export default function Form() {
               padding: 0.5rem 2rem;
               border: none;
               border-radius: 10px;
+              margin-bottom: 0.5rem;
               cursor: pointer;
               :hover {
                 background-color: rgba(0, 0, 0, 0.3);
+              }
+
+              @media screen and (min-width: 768px) {
+                margin-bottom: 0;
               }
             `}
           >클립보드 붙여넣기</button>
