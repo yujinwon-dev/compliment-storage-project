@@ -25,7 +25,7 @@ body {
   background-color: #f4f4f4;
 }
 
-button {
+button, input, textarea {
   font-family: GmarketSansMedium, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 

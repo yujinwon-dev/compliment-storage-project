@@ -17,6 +17,10 @@ export default function FloatingActionButton() {
         border: 1px solid #939393;
         border-radius: 50%;
         cursor: pointer;
+        :hover {
+          background-color: #E3CEF9;
+          border: none;
+        }
       `}
     >
       +

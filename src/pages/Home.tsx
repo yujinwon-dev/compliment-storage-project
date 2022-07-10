@@ -30,11 +30,10 @@ export default function Home() {
       />
       <div
         css={css`
-          display: grid;
-          grid-template-columns: 1.5fr 1fr;
+          display: flex;
+          flex-flow: row wrap;
 
           @media screen and (min-width: 768px) {
-            grid-template-columns: 1.5fr 1fr 1.5fr;
           }
         `}
       >
