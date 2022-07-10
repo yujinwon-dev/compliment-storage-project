@@ -55,6 +55,10 @@ export default function Form() {
   }
 
   function handleFormSubmit() {
+    if (name.length === 0 || content.length === 0) {
+      alert('입력하지 않은 항목이 있습니다.');
+      return;
+    }
     dispatch(add({name, content}));
     navigate('/');
   }
@@ -168,6 +172,7 @@ export default function Form() {
           onChange={e => setContent(e.target.value)}
           cols={30}
           rows={15}
+          required
           css={css`
             border: 1px solid #939393;
             border-radius: 10px;
@@ -184,6 +189,10 @@ export default function Form() {
             border-radius: 10px;
             margin: 1rem 0 0 auto;
             cursor: pointer;
+            :hover {
+              background-color: #E3CEF9;
+              border: 1px solid #E3CEF9;
+            }
           `}
         >추가</button>
       </form>
