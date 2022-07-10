@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +18,19 @@ body,
   min-width: 320px;
 }
 
-#root {
-  padding: 0 5rem;
+body {
+  font-family: GmarketSansMedium, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  padding: 0 1rem;
   background-color: #f4f4f4;
+}
+
+button {
+  font-family: GmarketSansMedium, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding: 0 5rem;
+  }
 }
