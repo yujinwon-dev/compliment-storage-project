@@ -4,6 +4,7 @@
 
 - [설계](#설계)
 - [트러블 슈팅](#트러블-슈팅)
+- [개선사항](#개선사항)
 
 
 
@@ -13,8 +14,6 @@
 
 - `react` 와 `typescript` 를 사용해서 칭찬 보관함 만들기
 
-
-
 ### 기술 스택
 
 - React
@@ -23,16 +22,12 @@
 - redux-persist
 - Emotion
 
-
-
 ### 공부 필요한 것들
 
 - 텍스트 추출 API
   - [Google Cloud Vision API](https://cloud.google.com/vision?hl=ko)
   - [카카오 Vision API](https://vision-api.kakao.com/#ocr)
 - [react-query](https://react-query.tanstack.com/)
-
-
 
 ### 디자인 소스
 
@@ -41,8 +36,6 @@
   - https://dribbble.com/shots/18504348-Kolibri-Stablecoin-Design-concept
 - 아이템 레이아웃
   - https://dribbble.com/shots/18503228-Web-Design-for-Marketing-Agency
-
-
 
 ### 레이아웃
 
@@ -111,3 +104,12 @@
   useNavigate가 react context를 얻으려면 context provider를 사용하는 라우터 컴포넌트의 자식으로 렌더링해야 한다. 따라서 Router 기반의 컴포넌트인 BrowserRouter를 index.tsx로 옮겨주었다.
 
   (참고한 글: https://stackoverflow.com/questions/70491774/usenavigate-may-be-used-only-in-the-context-of-a-router-component)
+
+
+
+## 개선사항
+
+- [x] 날짜 기록할 수 있도록 폼에 input 추가 및 인터페이스 수정
+- [ ] 수정, 삭제 기능 추가
+- [ ] 이미지에서 텍스트 추출: `.png` 처리
+- [ ] 카드 배치 CSS
