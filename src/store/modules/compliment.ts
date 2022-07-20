@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface Compliment {
   name: string;
   content: string;
+  date: string;
 }
 
 interface ComplimentState {

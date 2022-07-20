@@ -8,6 +8,7 @@ import { add } from '../store/modules/compliment';
 export default function Form() {
   const [name, setName] = useState<string>('');
   const [content, setContent] = useState<string>('');
+  const [date, setDate] = useState<string>('');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -59,7 +60,7 @@ export default function Form() {
       alert('입력하지 않은 항목이 있습니다.');
       return;
     }
-    dispatch(add({name, content}));
+    dispatch(add({name, content, date}));
     navigate('/');
   }
 
@@ -89,6 +90,21 @@ export default function Form() {
           id="name"
           value={name}
           onChange={e => setName(e.target.value)}
+          required
+          css={css`
+            background: none;
+            border: none;
+            border-bottom: 1px solid #000;
+            margin: 1rem 0;
+          `}
+        />
+        <label htmlFor="date">칭찬받은 날짜</label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          value={date}
+          onChange={e => setDate(e.target.value)}
           required
           css={css`
             background: none;

@@ -19,7 +19,7 @@ export default function Card({ compliment } : { compliment: Compliment }) {
           white-space: pre-line;
         `}
       >{compliment.content}</p>
-      <p>2022.06.20</p>
+      <p>{compliment.date}</p>
       <p>FROM: {compliment.name}</p>
     </article>
   );
