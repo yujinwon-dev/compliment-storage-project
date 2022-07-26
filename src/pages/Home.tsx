@@ -6,7 +6,6 @@ import FloatingActionButton from "../components/FloatingActionButton";
 
 export default function Home() {
   const complimentList = useAppSelector(state => state.complimentList);
-
   return (
     <>
       <svg
@@ -37,7 +36,7 @@ export default function Home() {
           }
         `}
       >
-        {complimentList.map(compliment => <Card key={compliment.content} compliment={compliment} />)}
+        {complimentList.map((compliment, idx) => <Card key={compliment.content} compliment={compliment} id={idx} />)}
       </div>
       <FloatingActionButton />
     </>

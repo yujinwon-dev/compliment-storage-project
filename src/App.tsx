@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Form from './pages/Form';
+import Detail from './pages/Detail';
 import logo from './assets/logo.png'
 
 
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Form />} />
+        <Route path="/detail/:complimentId" element={<Detail />} />
       </Routes>
     </>
   );
