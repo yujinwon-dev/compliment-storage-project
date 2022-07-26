@@ -1,13 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../store/hooks';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { deleteItem } from '../store/modules/compliment';
 
 export default function Detail() {
+  const navigate = useNavigate();
   const { complimentId } = useParams();
   const complimentIdAsNum = Number(complimentId);
   const complimentList = useAppSelector(state => state.complimentList);
   const compliment = complimentList[complimentIdAsNum];
+  const dispatch = useAppDispatch();
+
+  function handleDelete() {
+    dispatch(deleteItem(complimentIdAsNum));
+    navigate('/');
+  }
   return (
     <div
     >
@@ -63,6 +71,7 @@ export default function Detail() {
             `}
           >수정</button>
           <button
+            onClick={() => handleDelete()}
             css={css`
               width: fit-content;
               font-size: 1rem;

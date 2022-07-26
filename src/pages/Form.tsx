@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
-import { add } from '../store/modules/compliment';
+import { addItem } from '../store/modules/compliment';
 
 export default function Form() {
   const [name, setName] = useState<string>('');
@@ -60,7 +60,7 @@ export default function Form() {
       alert('입력하지 않은 항목이 있습니다.');
       return;
     }
-    dispatch(add({name, content, date}));
+    dispatch(addItem({name, content, date}));
     navigate('/');
   }
 

@@ -18,11 +18,14 @@ export const complimentSlice = createSlice({
   name: 'compliment',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Compliment>) => {
+    addItem: (state, action: PayloadAction<Compliment>) => {
       state.complimentList.push(action.payload);
-    }
+    },
+    deleteItem: (state, action: PayloadAction<number>) => {
+      state.complimentList.splice(action.payload, 1);
+    },
   }
 })
 
-export const { add } = complimentSlice.actions;
+export const { addItem, deleteItem } = complimentSlice.actions;
 export default complimentSlice.reducer;
