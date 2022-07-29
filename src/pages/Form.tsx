@@ -141,7 +141,7 @@ export default function Form() {
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
-            margin: 1rem 0;
+            margin: 1rem 0 1.5rem;
             
             @media screen and (min-width: 768px) {
               flex-direction: row;
@@ -172,35 +172,52 @@ export default function Form() {
               }
             `}
           >클립보드 붙여넣기</button>
-          <label
-            htmlFor="input-file"
+          <div
             css={css`
-              display: inline-block;
-              width: fit-content;
-              color: #fff;
-              background-color: rgba(0, 0, 0, 0.6);
-              padding: 0.5rem 2rem;
-              border-radius: 10px;
-              cursor: pointer;
-              :hover {
-                background-color: rgba(0, 0, 0, 0.3);
-              }
-              `}
-          >이미지에서 텍스트 추출하기</label>
-          <input
-            type="file"
-            name="input-file"
-            id="input-file"
-            onChange={e => handleImageSelection(e)}
-            css={css`
-                position: absolute;
-                z-index: -100;
-                width: 1px;
-                height: 1px;
-                overflow: hidden;
-                opacity: 0;
+              display: flex;
+              flex-flow: column wrap;
+              position: relative;
             `}
-          />
+          >
+            <label
+              htmlFor="input-file"
+              css={css`
+                display: inline-block;
+                width: fit-content;
+                color: #fff;
+                background-color: rgba(0, 0, 0, 0.6);
+                padding: 0.5rem 2rem;
+                border-radius: 10px;
+                cursor: pointer;
+                :hover {
+                  background-color: rgba(0, 0, 0, 0.3);
+                }
+                `}
+            >이미지에서 텍스트 추출하기</label>
+            <small
+              css={css`
+                width: fit-content;
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+              `}
+            >.jpeg 형식만 지원합니다.</small>
+            <input
+              type="file"
+              name="input-file"
+              id="input-file"
+              onChange={e => handleImageSelection(e)}
+              css={css`
+                  position: absolute;
+                  z-index: -100;
+                  width: 1px;
+                  height: 1px;
+                  overflow: hidden;
+                  opacity: 0;
+              `}
+            />
+          </div>
         </div>
         <textarea
           name="content"
