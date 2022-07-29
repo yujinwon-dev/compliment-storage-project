@@ -8,7 +8,7 @@ export default function Card({ compliment, id } : { compliment: Compliment, id: 
   return (
     <>
       <article
-        onClick={() => navigate(`/detail/${id}`)}
+        onClick={() => navigate(`/${id}`)}
         css={css`
           display: inline-block;
           max-width: 800px;

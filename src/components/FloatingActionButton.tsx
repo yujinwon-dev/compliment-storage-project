@@ -6,7 +6,7 @@ export default function FloatingActionButton() {
   const navigate = useNavigate();
   return (
     <button
-      onClick={() => navigate('/create')}
+      onClick={() => navigate('/form')}
       css={css`
         position: fixed;
         right: 2rem;

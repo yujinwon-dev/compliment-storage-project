@@ -29,8 +29,8 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Form />} />
-        <Route path="/detail/:complimentId" element={<Detail />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/:complimentId" element={<Detail />} />
       </Routes>
     </>
   );

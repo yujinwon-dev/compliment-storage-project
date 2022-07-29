@@ -29,6 +29,14 @@ button, input, textarea {
   font-family: GmarketSansMedium, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+::selection {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 @media screen and (min-width: 768px) {
   body {
     padding: 0 5rem;

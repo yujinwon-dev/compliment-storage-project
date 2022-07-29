@@ -6,6 +6,10 @@ export interface Compliment {
   date: string;
 }
 
+export interface ComplimentWithId extends Compliment {
+  id: number;
+}
+
 interface ComplimentState {
   complimentList: Array<Compliment>;
 }
@@ -24,8 +28,12 @@ export const complimentSlice = createSlice({
     deleteItem: (state, action: PayloadAction<number>) => {
       state.complimentList.splice(action.payload, 1);
     },
+    updateItem: (state, action: PayloadAction<ComplimentWithId>) => {
+      const { id, name, content, date } = action.payload;
+      state.complimentList[id] = { name, content, date };
+    }
   }
 })
 
-export const { addItem, deleteItem } = complimentSlice.actions;
+export const { addItem, deleteItem, updateItem } = complimentSlice.actions;
 export default complimentSlice.reducer;

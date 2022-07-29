@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { useAppDispatch } from '../store/hooks';
+import { useCompliment } from '../hooks/useCompliment';
 import { deleteItem } from '../store/modules/compliment';
 
 export default function Detail() {
   const navigate = useNavigate();
   const { complimentId } = useParams();
   const complimentIdAsNum = Number(complimentId);
-  const complimentList = useAppSelector(state => state.complimentList);
-  const compliment = complimentList[complimentIdAsNum];
+  const compliment = useCompliment(complimentIdAsNum);
   const dispatch = useAppDispatch();
 
   function handleDelete() {
@@ -52,6 +52,7 @@ export default function Detail() {
           `}
         >
           <button
+            onClick={() => navigate('/form', { state: { ...compliment, id: complimentId }})}
             css={css`
               width: fit-content;
               font-size: 1rem;

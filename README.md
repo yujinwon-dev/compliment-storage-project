@@ -6,8 +6,6 @@
 - [트러블 슈팅](#트러블-슈팅)
 - [개선사항](#개선사항)
 
-
-
 ## 설계
 
 ### 목표
@@ -59,8 +57,6 @@
 
 ![플젝레이아웃-2](README.assets/layout2.jpg)
 
-
-
 ## 트러블 슈팅
 
 #### Google Vision API 작동하지 않음
@@ -105,11 +101,10 @@
 
   (참고한 글: https://stackoverflow.com/questions/70491774/usenavigate-may-be-used-only-in-the-context-of-a-router-component)
 
-
-
 ## 개선사항
 
 - [x] 날짜 기록할 수 있도록 폼에 input 추가 및 인터페이스 수정
-- [ ] 수정, 삭제 기능 추가
+- [x] 수정, 삭제 기능 추가
 - [ ] 이미지에서 텍스트 추출: `.png` 처리
 - [ ] 카드 배치 CSS
+- [ ] compliment item의 key 변경 고민해보기(인덱스는 바뀌는 값이므로)

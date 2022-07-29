@@ -1,16 +1,30 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
-import { addItem } from '../store/modules/compliment';
+import { ComplimentWithId, addItem, updateItem } from '../store/modules/compliment';
 
 export default function Form() {
-  const [name, setName] = useState<string>('');
-  const [content, setContent] = useState<string>('');
-  const [date, setDate] = useState<string>('');
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [nameInput, setNameInput] = useState<string>('');
+  const [contentInput, setContentInput] = useState<string>('');
+  const [dateInput, setDateInput] = useState<string>('');
+  const [complimentId, setComplimentId] = useState<number>(0);
+  const [isForUpdate, setIsForUpdate] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  
+  useEffect(() => {
+    if (location.state) {
+      const { name, content, date, id } = location.state as ComplimentWithId;
+      setNameInput(name);
+      setContentInput(content);
+      setDateInput(date);
+      setComplimentId(id);
+      setIsForUpdate(true);
+    }
+  }, [location.state]);
 
   function handleImageSelection(event: React.ChangeEvent<HTMLInputElement>) {
     const { files } = event.target;
@@ -50,18 +64,24 @@ export default function Form() {
       .then(res => res.json())
       .then(data => {
         const text = data.responses[0].fullTextAnnotation.text;
-        setContent(text.replaceAll('\n', ''));
+        setContentInput(text.replaceAll('\n', ''));
       })
       .catch(() => alert('텍스트를 추출할 수 없는 이미지입니다.'));
   }
 
-  function handleFormSubmit() {
-    if (name.length === 0 || content.length === 0) {
+  function handleFormSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    if (nameInput.length === 0 || contentInput.length === 0) {
       alert('입력하지 않은 항목이 있습니다.');
       return;
     }
-    dispatch(addItem({name, content, date}));
-    navigate('/');
+    if (!isForUpdate) {
+      dispatch(addItem({ name: nameInput, content: contentInput, date: dateInput }));
+      navigate('/');
+    } else {
+      dispatch(updateItem({ name: nameInput, content: contentInput, date: dateInput, id: complimentId }));
+      navigate(`/${complimentId}`);
+    }
   }
 
   return (
@@ -77,6 +97,7 @@ export default function Form() {
         `}
       >칭찬 추가하기</h1>
       <form
+        onSubmit={handleFormSubmit}
         css={css`
           display: flex;
           flex-flow: column wrap;
@@ -88,8 +109,8 @@ export default function Form() {
           type="text"
           name="name"
           id="name"
-          value={name}
-          onChange={e => setName(e.target.value)}
+          value={nameInput}
+          onChange={e => setNameInput(e.target.value)}
           required
           css={css`
             background: none;
@@ -103,8 +124,8 @@ export default function Form() {
           type="date"
           name="date"
           id="date"
-          value={date}
-          onChange={e => setDate(e.target.value)}
+          value={dateInput}
+          onChange={e => setDateInput(e.target.value)}
           required
           css={css`
             background: none;
@@ -130,7 +151,7 @@ export default function Form() {
           <button
             type="button"
             onClick={() => {
-              navigator.clipboard.readText().then(clipText => setContent(clipText))
+              navigator.clipboard.readText().then(clipText => setContentInput(clipText))
             }}
             css={css`
               width: fit-content;
@@ -184,8 +205,8 @@ export default function Form() {
         <textarea
           name="content"
           id="content"
-          value={content}
-          onChange={e => setContent(e.target.value)}
+          value={contentInput}
+          onChange={e => setContentInput(e.target.value)}
           cols={30}
           rows={15}
           required
@@ -195,8 +216,7 @@ export default function Form() {
           `}
         />
         <button
-          type="button"
-          onClick={handleFormSubmit}
+          type="submit"
           css={css`
             width: fit-content;
             font-size: 1rem;
