@@ -41,7 +41,7 @@ export default function Form() {
   }
 
   function handleTextDetection(selectedFile: string) {
-    const url = `https://vision.googleapis.com/v1/images:annotate?key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+    const url = `https://vision.googleapis.com/v1/images:annotate?key=${import.meta.env.REACT_APP_GOOGLE_API_KEY}`;
     const payload = {
       requests: [
         {
