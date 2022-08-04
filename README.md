@@ -89,7 +89,9 @@
 
 - 해결
 
-  각 파일에 pragma를 추가했다. 하지만 비효율적이기 때문에 babel 설정을 바꾸는 법을 찾아봐야 할 듯하다.
+  ~~각 파일에 pragma를 추가했다. 하지만 비효율적이기 때문에 babel 설정을 바꾸는 법을 찾아봐야 할 듯하다.~~
+
+  Vite로 마이그레이션 하게 되면서 jsxImportSource 옵션이 적용되었고 이에 더해 babel 설정을 추가해주었다.
 
 #### react-router-dom useNavigate 관련 에러
 
