@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useAppSelector } from '../store/hooks';
 import Card from "../components/Card";

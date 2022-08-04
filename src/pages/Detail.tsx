@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks';
